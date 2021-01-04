@@ -3,15 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux'
+import './index.css';
+import Backendless from 'backendless';
+import { createStore } from './store'
+const rootElement = document.getElementById('root');
 
+Backendless.initApp("4D574777-E562-38E8-FF3E-EADE8E161100", "C9874BDD-18D0-4626-B439-2387B5798DEF");
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+    <Provider store={createStore()}>
+        <App/>
+    </Provider>,
+    rootElement
+)
 reportWebVitals();
